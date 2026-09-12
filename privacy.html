@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <style>body{font:16px/1.6 system-ui,sans-serif;max-width:40em;margin:3em auto;padding:0 1em}h1{font-size:1.5em}</style>
 <h1>familychat privacy policy</h1>
-<p>Last updated 11 September 2026. <a href="index.html">Back to familychat</a>.</p>
+<p>Last updated 12 September 2026. <a href="index.html">Back to familychat</a>.</p>
 
 <h2>Who this covers</h2>
 <p>familychat is a personal tool with a single user, the person who installed it and
@@ -22,10 +22,15 @@ requests no other scope and can read no other Google data.</p>
 on their own computer. It is used for no other purpose.</p>
 
 <h2>How that data is stored</h2>
-<p>Task data is held in memory while the reminder is built and displayed, and is not
-written to a database or uploaded anywhere. The OAuth refresh token is stored in a
-file readable only by the user's own operating system account, on that user's
-computer. There is no server and no hosted component.</p>
+<p>Task data is held in memory while the reminder is built. The reminder itself is
+then written to a file on the signed-in user's own computer, in a directory readable
+only by that user's own operating system account. That file holds the open task
+titles and, where a task has one, that task's due date. It holds no task notes, no
+links, and no Google Chat Space identifiers. It is overwritten on every run, so it
+carries the current reminder and no history. The OAuth refresh token is stored in a
+separate file in the application's configuration directory, readable only by the same
+operating system account. Nothing is written to a database and nothing is uploaded
+anywhere. There is no server and no hosted component.</p>
 
 <h2>How that data is shared</h2>
 <p>familychat shares Google user data with no one. It sends no data to any third
@@ -39,11 +44,14 @@ signed-in user reads it.</p>
 including the Limited Use requirements.</p>
 
 <h2>Retention and deletion</h2>
-<p>Nothing is retained beyond the run that displays a reminder. The user can revoke
-familychat's access at any time at
-<a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>
-and delete the stored token by removing the application's configuration directory.
-That leaves no copy of any Google user data.</p>
+<p>Nothing is retained beyond the reminder file described above, which stays on the
+user's own computer and is replaced by the next run. The user can revoke familychat's
+access at any time at
+<a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>,
+and can delete every copy of their Google user data, the reminder file and the stored
+token alike, by removing the application's state directory and its configuration
+directory (on Linux, <code>~/.local/state/familychat</code> and
+<code>~/.config/familychat</code>). That leaves no copy of any Google user data.</p>
 
 <h2>Contact</h2>
 <p>corobis@gmail.com</p>
