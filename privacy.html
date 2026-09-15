@@ -27,7 +27,12 @@ then written to a file on the signed-in user's own computer, in a directory read
 only by that user's own operating system account. That file holds the open task
 titles and, where a task has one, that task's due date. It holds no task notes, no
 links, and no Google Chat Space identifiers. It is overwritten on every run, so it
-carries the current reminder and no history. The OAuth refresh token is stored in a
+carries the current reminder and no history. A second file in the same directory
+records, for each open task, the task's Google Tasks identifier and the date
+familychat first saw that task, so the reminder can show how long a task has been
+open. That entry is removed as soon as the task is no longer open; the file never
+holds titles, notes, or anything about tasks that have been completed or deleted.
+The OAuth refresh token is stored in a
 separate file in the application's configuration directory, readable only by the same
 operating system account. Nothing is written to a database and nothing is uploaded
 anywhere. There is no server and no hosted component.</p>
@@ -44,12 +49,13 @@ signed-in user reads it.</p>
 including the Limited Use requirements.</p>
 
 <h2>Retention and deletion</h2>
-<p>Nothing is retained beyond the reminder file described above, which stays on the
-user's own computer and is replaced by the next run. The user can revoke familychat's
+<p>Nothing is retained beyond the two files described above, which stay on the
+user's own computer; the reminder file is replaced by the next run and the first-seen
+file is pruned by it. The user can revoke familychat's
 access at any time at
 <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>,
-and can delete every copy of their Google user data, the reminder file and the stored
-token alike, by removing the application's state directory and its configuration
+and can delete every copy of their Google user data, the reminder file, the first-seen
+file, and the stored token alike, by removing the application's state directory and its configuration
 directory (on Linux, <code>~/.local/state/familychat</code> and
 <code>~/.config/familychat</code>). That leaves no copy of any Google user data.</p>
 
