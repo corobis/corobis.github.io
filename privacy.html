@@ -27,7 +27,10 @@ then written to a file on the signed-in user's own computer, in a directory read
 only by that user's own operating system account. That file holds the open task
 titles and, where a task has one, that task's due date. It holds no task notes, no
 links, and no Google Chat Space identifiers. It is overwritten on every run, so it
-carries the current reminder and no history. A second file in the same directory
+carries the current reminder and no history. A machine-readable copy of the same
+reminder, holding each open task's Google Tasks identifier, title, and due date, is
+written alongside it and overwritten on every run, so the reminder's snooze keys can
+name the task. A second file in the same directory
 records, for each open task, the task's Google Tasks identifier and the date
 familychat first saw that task, so the reminder can show how long a task has been
 open. That entry is removed as soon as the task is no longer open; the file never
