@@ -32,6 +32,11 @@ records, for each open task, the task's Google Tasks identifier and the date
 familychat first saw that task, so the reminder can show how long a task has been
 open. That entry is removed as soon as the task is no longer open; the file never
 holds titles, notes, or anything about tasks that have been completed or deleted.
+A third file in the same directory records, for each task the user has chosen to
+snooze from the reminder, the task's Google Tasks identifier and the date the snooze
+ends. It is written only when the user presses a snooze key in the reminder, holds
+no titles or notes, and an entry is removed as soon as the task is no longer open.
+Snoozing changes nothing in Google Tasks; familychat never writes to Google.
 The OAuth refresh token is stored in a
 separate file in the application's configuration directory, readable only by the same
 operating system account. Nothing is written to a database and nothing is uploaded
@@ -49,13 +54,13 @@ signed-in user reads it.</p>
 including the Limited Use requirements.</p>
 
 <h2>Retention and deletion</h2>
-<p>Nothing is retained beyond the two files described above, which stay on the
+<p>Nothing is retained beyond the three files described above, which stay on the
 user's own computer; the reminder file is replaced by the next run and the first-seen
-file is pruned by it. The user can revoke familychat's
+and snooze files are pruned by it. The user can revoke familychat's
 access at any time at
 <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>,
 and can delete every copy of their Google user data, the reminder file, the first-seen
-file, and the stored token alike, by removing the application's state directory and its configuration
+file, the snooze file, and the stored token alike, by removing the application's state directory and its configuration
 directory (on Linux, <code>~/.local/state/familychat</code> and
 <code>~/.config/familychat</code>). That leaves no copy of any Google user data.</p>
 
