@@ -43,13 +43,21 @@ Snoozing changes nothing in Google Tasks; familychat never writes to Google.
 The OAuth refresh token is stored in a
 separate file in the application's configuration directory, readable only by the same
 operating system account. Nothing is written to a database and nothing is uploaded
-anywhere. There is no server and no hosted component.</p>
+anywhere, with the one exception described in the next section. There is no server
+and no hosted component.</p>
 
 <h2>How that data is shared</h2>
-<p>familychat shares Google user data with no one. It sends no data to any third
-party, transfers none to any other service, and uses none for advertising, profiling,
-credit assessment, or training machine learning models. No human other than the
-signed-in user reads it.</p>
+<p>familychat shares Google user data with no one, with one exception the user
+triggers by hand. When the user presses the agent or split key on a task in the
+reminder, familychat starts the Claude Code command-line tool on the user's own
+computer with that one task's title inside a fixed prompt asking for a short next
+step. The title is then sent to Anthropic's API under the user's own Anthropic account
+and Anthropic's terms. Nothing else is sent: no task identifier, due date, notes,
+Space information, or other tasks. Nothing is sent unless the user presses one of
+those two keys, and each press sends one title. Beyond that, familychat sends no data
+to any third party, transfers none to any other service, and uses none for
+advertising, profiling, credit assessment, or training machine learning models. No
+human other than the signed-in user reads it.</p>
 
 <h2>Limited Use</h2>
 <p>familychat's use of information received from Google APIs adheres to the
